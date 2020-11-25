@@ -17,12 +17,20 @@ hs_completion <- readRDS("hs_fig.rds")
 bachelors_plot <- readRDS("bachelors_fig.rds")
 sc_educ_exnative <- readRDS("sc_educ_exnative.rds")
 educ_attainment <- readRDS("educ_attainment_map.rds")
+per_internetacc <- readRDS("perc_internetacc.rds")
+internet_acc_map <- readRDS("internet_acc_map.rds")
+sc_educ_mobility <- readRDS("sc_flows_19.rds")
+
 ```
 
 Page 1
 =======================================================================
 Column {data-width=550}
 -----------------------------------------------------------------------
+
+All of the graphics displayed below were derived from a statistical evaluation of educational attainment by race in Santa Clara, as it is recorded in the Census. Since this is an analysis by race, rather than ethnicity, the race variable for White respondents encompasses Hispanic White respondents as well. Additionally, since ethnic groups have been excluded from this analysis, Latino populations are not represented in the data. Lastly, please note that all of the datasets on educational attainment in the American Communities Survey are recorded for respondents age 25 and older.
+
+Given the graphs and charts displayed above, there is a clear disparity in educational attainment by race in Santa Clara County. Though 54% of Santa Clara residents are non-white, non-white respondents make up over 60% of respondents age 25 or older who have not obtained a High School diploma. Moreover, Asian and White respondents make up over 93% of those with a Bachelor’s Degree or Higher in Santa Clara, with Black or African American respondents accounting for only 2% of that population. While these findings illuminate a striking disparity in educational attainment by race in Santa Clara County, given that 25% of residents in Santa Clara are Latino/Hispanic, future study on this topic would benefit greatly from evaluating ethnic breakdowns as well.
 
 ### Santa Clara County Educational Attainment by Race 
 
@@ -51,9 +59,20 @@ Page 2
 Column {data-width=1000}
 ------------------------------------------------------------------------------
 
-### K-12 Students without Internet Access in Santa Clara County
+### Educational Mobility in Santa Clara County
 
 ```{r}
+sc_educ_mobility
+```
 
+Page 3 
+==============================================================================
+
+Column {data-width=1000}
+------------------------------------------------------------------------------
+
+### K-12 Students in Santa Clara County without Internet Access
+```{r}
+internet_acc_map
 ```
 
