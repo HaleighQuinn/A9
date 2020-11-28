@@ -12,6 +12,7 @@ library(tidyverse)
 library(leaflet)
 library(plotly)
 library(tidycensus)
+library(gt)
 
 hs_completion <- readRDS("hs_fig.rds")
 bachelors_plot <- readRDS("bachelors_fig.rds")
@@ -19,7 +20,8 @@ sc_educ_exnative <- readRDS("sc_educ_exnative.rds")
 educ_attainment <- readRDS("educ_attainment_map.rds")
 per_internetacc <- readRDS("perc_internetacc.rds")
 internet_acc_map <- readRDS("internet_acc_map.rds")
-sc_educ_mobility <- readRDS("sc_flows_19.rds")
+sc_flows_19 <- readRDS("sc_flows_19_1.rds")
+
 
 ```
 
@@ -62,7 +64,18 @@ Column {data-width=1000}
 ### Educational Mobility in Santa Clara County
 
 ```{r}
-sc_educ_mobility
+
+sc_flows_tbl <- gt(data = sc_flows_19)
+
+sc_flows_tbl
+
+sc_flows_tbl <- 
+  sc_flows_tbl %>%
+  tab_header(
+    title = "Educational Mobility in Santa Clara County"
+  )
+
+
 ```
 
 Page 3 
