@@ -1,0 +1,64 @@
+---
+title: "Sidebar"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+    vertical_layout: fill
+    theme: spacelab
+---
+
+
+
+```{r global, include=FALSE}
+library(flexdashboard)
+library(tidyverse)
+library(leaflet)
+library(plotly)
+library(tidycensus)
+library(gt)
+
+bachelors_fig <- readRDS("bachelors_fig1.rds")
+hs_fig <- readRDS("hs_fig.rds")
+sc_flows_19 <- readRDS("sc_flows_19_1.rds")
+```
+
+Page 1 {data-icon="fa-signal"}
+=======================================================================
+
+Column {data-width=1000}
+-----------------------------------------------------------------------
+
+### Chart A
+
+
+```{r}
+bachelors_fig
+```
+
+Column {data-width=500}
+-----------------------------------------------------------------------
+
+
+
+### Chart B
+
+```{r}
+hs_fig
+```
+
+### Chart C
+
+```{r, fig.align = 'center'}
+
+sc_flows_tbl <- gt(data = sc_flows_19)
+
+sc_flows_tbl
+
+sc_flows_tbl <- 
+  sc_flows_tbl %>%
+  tab_header(
+    title = "Educational Mobility in Santa Clara County"
+  )
+
+```
+

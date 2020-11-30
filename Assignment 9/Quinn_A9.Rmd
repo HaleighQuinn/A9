@@ -1,10 +1,12 @@
 ---
-title: "A9"
+title: "Educational Equity Analysis for Santa Clara County"
 output: 
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
     theme: united
+editor_options: 
+  chunk_output_type: inline
 ---
 
 
@@ -71,7 +73,6 @@ Column {data-width=600}
 
 sc_flows_tbl <- gt(data = sc_flows_19)
 
-sc_flows_tbl
 
 sc_flows_tbl <- 
   sc_flows_tbl %>%
@@ -79,7 +80,17 @@ sc_flows_tbl <-
     title = "Educational Mobility in Santa Clara County"
   )
 
+sc_flows_tbl1 <- 
+  sc_flows_tbl %>%
+  tab_header(
+    title = "Educational Mobility in Santa Clara County"
+  ) %>% 
+  tab_options(
+    table.width = pct(100),
+    data_row.padding = px(45)
+  ) 
 
+sc_flows_tbl1
 ```
 
 Column {data-width=400}
@@ -87,10 +98,13 @@ Column {data-width=400}
 
 ### Analysis of Educational Mobility Data
 
-The table below illustrates a fair amount of educational mobility for Santa Clara County Residents. Regarding the Bachelor's degree education tier, 23,263 people physically left Santa Clara, while 23,027 people moved into Santa Clara, which is represented by an external net flow of -236. However, after accounting for this movement, an additional -4,379 people whose movement is unexplained, as characterized by the internal net flow. The population loss of the internal net flow can be attributed to several sources. First off, the internal net flow can be accounting for deaths among respondents in the Bachelor's degree education tier. However, it is unlikely that deaths are the primary source of the 4,379 person loss. Two other explanations could be that 4,379 people left the country, and thus were not accounted for in the ACS this past year, or that these people moved into a different education tier. Since it is unlikely that 4,379 people left the country, it is most likely that these respondents simply moved into another education tier, like the Graduate or professional degree tier.
+
+The table illustrates a fair amount of educational mobility for Santa Clara County Residents. Regarding the Bachelor's degree education tier, 23,263 people physically left Santa Clara, while 23,027 people moved into Santa Clara, which is represented by an external net flow of -236. However, after accounting for this movement, an additional -4,379 people whose movement is unexplained, as characterized by the internal net flow. The population loss of the internal net flow can be attributed to several sources. First off, the internal net flow can be accounting for deaths among respondents in the Bachelor's degree education tier. However, it is unlikely that deaths are the primary source of the 4,379 person loss. Two other explanations could be that 4,379 people left the country, and thus were not accounted for in the ACS this past year, or that these people moved into a different education tier. Since it is unlikely that 4,379 people left the country, it is most likely that these respondents simply moved into another education tier, like the Graduate or professional degree tier.
+
 
 
 For the Graduate or professional degree education tier, much of the same logic can explain the internal net flow of -6,143. However, since there is no higher education tier for this category's population to move into, it is unlikely that the internal net flow can be explained by respondents simply completing their graduate education. Since the internal net flow is positive for the High School graduate, less than High School graduate, and Some college or associate's degree education tiers, more people are likely to have moved into each of these tiers over the past year. Unfortunately, the "Less than high school graduate" category has an internal net flow of 3780 people, indicating an increase in those over 25 who do not have a high school diploma over the past year.
+
 
 
 These numeric findings have significant implications for the conclusions that can be drawn about educational displacement in Santa Clara County. Though a substantial portion of Santa Clara County Residents moved into higher education tiers, there was still a considerable portion of the population whose educational mobility was disrupted by educational displacement determinants, like race or class. The next page explores such determinants in greater detail by evaluating the internet access gap for students in Santa Clara County.
@@ -100,7 +114,7 @@ These numeric findings have significant implications for the conclusions that ca
 Map {data-icon="fa-map-marker-alt"}
 ==============================================================================
 
-Column {data-width=800}
+Column {data-width=850}
 ------------------------------------------------------------------------------
 
 ### K-12 Students in Santa Clara County without Internet Access
@@ -108,7 +122,7 @@ Column {data-width=800}
 internet_acc_map
 ```
 
-Column {data-width=200}
+Column {data-width=150}
 --------------------------------------------------------------------------------
 
 ### Analysis of Internet Access Data 
