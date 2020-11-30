@@ -4,9 +4,11 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    theme: united
 ---
 
-```{r setup, include=FALSE}
+
+```{r global, include=FALSE}
 library(flexdashboard)
 library(tidyverse)
 library(leaflet)
@@ -14,10 +16,10 @@ library(plotly)
 library(tidycensus)
 library(gt)
 
-hs_completion <- readRDS("hs_fig.rds")
-bachelors_plot <- readRDS("bachelors_fig.rds")
+hs_completion <- readRDS("hs_fig1.rds")
+bachelors_plot <- readRDS("bachelors_fig1.rds")
 sc_educ_exnative <- readRDS("sc_educ_exnative.rds")
-educ_attainment <- readRDS("educ_attainment_map.rds")
+educ_attainment <- readRDS("educ_attainment_plot.rds")
 per_internetacc <- readRDS("perc_internetacc.rds")
 internet_acc_map <- readRDS("internet_acc_map.rds")
 sc_flows_19 <- readRDS("sc_flows_19_1.rds")
@@ -25,14 +27,15 @@ sc_flows_19 <- readRDS("sc_flows_19_1.rds")
 
 ```
 
-Page 1
+Visualizations {data-icon="fa-signal"}
 =======================================================================
+
+The charts depicted here model educational attainment data by race in Santa Clara County, as it is recorded in the Census. Since this is an analysis by race, rather than ethnicity, the race variable for White respondents encompasses Hispanic White respondents as well. Additionally, since ethnic groups have been excluded from this analysis, Latino populations are not represented in the data. Please note that all of the data on educational attainment in the American Communities Survey are recorded for respondents age 25 and older.
+
+There is a clear disparity in educational attainment by race in Santa Clara County. Though 54% of Santa Clara residents are non-white, non-white respondents make up over 60% of respondents age 25 or older who have not obtained a High School diploma. Moreover, Asian and White respondents make up over 93% of those with a Bachelor’s Degree or Higher in Santa Clara, while Black or African American respondents accounting for only 2% of that population. While these findings illuminate a striking disparity in educational attainment by race in Santa Clara County, given that 25% of residents in Santa Clara are Latino/Hispanic, future study on this topic would benefit greatly from evaluating ethnic breakdowns as well.
+
 Column {data-width=550}
 -----------------------------------------------------------------------
-
-All of the graphics displayed below were derived from a statistical evaluation of educational attainment by race in Santa Clara, as it is recorded in the Census. Since this is an analysis by race, rather than ethnicity, the race variable for White respondents encompasses Hispanic White respondents as well. Additionally, since ethnic groups have been excluded from this analysis, Latino populations are not represented in the data. Lastly, please note that all of the datasets on educational attainment in the American Communities Survey are recorded for respondents age 25 and older.
-
-Given the graphs and charts displayed above, there is a clear disparity in educational attainment by race in Santa Clara County. Though 54% of Santa Clara residents are non-white, non-white respondents make up over 60% of respondents age 25 or older who have not obtained a High School diploma. Moreover, Asian and White respondents make up over 93% of those with a Bachelor’s Degree or Higher in Santa Clara, with Black or African American respondents accounting for only 2% of that population. While these findings illuminate a striking disparity in educational attainment by race in Santa Clara County, given that 25% of residents in Santa Clara are Latino/Hispanic, future study on this topic would benefit greatly from evaluating ethnic breakdowns as well.
 
 ### Santa Clara County Educational Attainment by Race 
 
@@ -41,7 +44,7 @@ educ_attainment
 ```
 
 Column {data-width=450}
------------------------------------------------------------------------
+----------------------------------------------------------------------
 
 ### High School Completion by Race in Santa Clara County
 
@@ -55,10 +58,11 @@ hs_completion
 bachelors_plot
 ```
 
-Page 2
+
+Table {data-icon="fa-table"}
 ==============================================================================
 
-Column {data-width=1000}
+Column {data-width=600}
 ------------------------------------------------------------------------------
 
 ### Educational Mobility in Santa Clara County
@@ -78,14 +82,42 @@ sc_flows_tbl <-
 
 ```
 
-Page 3 
+Column {data-width=400}
+------------------------------------------------------------------------------
+
+### Analysis of Educational Mobility Data
+
+The table below illustrates a fair amount of educational mobility for Santa Clara County Residents. Regarding the Bachelor's degree education tier, 23,263 people physically left Santa Clara, while 23,027 people moved into Santa Clara, which is represented by an external net flow of -236. However, after accounting for this movement, an additional -4,379 people whose movement is unexplained, as characterized by the internal net flow. The population loss of the internal net flow can be attributed to several sources. First off, the internal net flow can be accounting for deaths among respondents in the Bachelor's degree education tier. However, it is unlikely that deaths are the primary source of the 4,379 person loss. Two other explanations could be that 4,379 people left the country, and thus were not accounted for in the ACS this past year, or that these people moved into a different education tier. Since it is unlikely that 4,379 people left the country, it is most likely that these respondents simply moved into another education tier, like the Graduate or professional degree tier.
+
+
+For the Graduate or professional degree education tier, much of the same logic can explain the internal net flow of -6,143. However, since there is no higher education tier for this category's population to move into, it is unlikely that the internal net flow can be explained by respondents simply completing their graduate education. Since the internal net flow is positive for the High School graduate, less than High School graduate, and Some college or associate's degree education tiers, more people are likely to have moved into each of these tiers over the past year. Unfortunately, the "Less than high school graduate" category has an internal net flow of 3780 people, indicating an increase in those over 25 who do not have a high school diploma over the past year.
+
+
+These numeric findings have significant implications for the conclusions that can be drawn about educational displacement in Santa Clara County. Though a substantial portion of Santa Clara County Residents moved into higher education tiers, there was still a considerable portion of the population whose educational mobility was disrupted by educational displacement determinants, like race or class. The next page explores such determinants in greater detail by evaluating the internet access gap for students in Santa Clara County.
+
+
+
+Map {data-icon="fa-map-marker-alt"}
 ==============================================================================
 
-Column {data-width=1000}
+Column {data-width=800}
 ------------------------------------------------------------------------------
 
 ### K-12 Students in Santa Clara County without Internet Access
 ```{r}
 internet_acc_map
 ```
+
+Column {data-width=200}
+--------------------------------------------------------------------------------
+
+### Analysis of Internet Access Data 
+
+In Santa Clara County, 38.54% of students (or 7,894 students total) grades K-12 are without internet access. As shown in the map above, most of these students are concentrated in the downtown area of San Jose, which is historically the lowest income and densest part of the city. 
+
+
+Given the large number of students without access to the internet in San Jose, it is reasonable to assume that the neighborhoods within this city are characterized by low median household incomes, and a significant portion of the city’s population living below the poverty line. In the context of COVID-19, this data becomes especially pertinent. As millions of students have been required to attend online school, students without internet access at home are in danger of falling behind. With information like this, school districts and companies can ensure that each student can participate in online school by providing mobile hot spots or discounted internet service plans.
+
+
+
 

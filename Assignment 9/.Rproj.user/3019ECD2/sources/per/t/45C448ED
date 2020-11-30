@@ -3,7 +3,7 @@
     "path": "~/GitHub/A9/Assignment 9/Quinn_A9.Rmd",
     "project_path": "Quinn_A9.Rmd",
     "type": "r_markdown",
-    "hash": "3088477539",
+    "hash": "1320192571",
     "contents": "",
     "dirty": false,
     "created": 1606344151069.0,
@@ -11,16 +11,16 @@
     "relative_order": 1,
     "properties": {
         "tempName": "Untitled1",
-        "cursorPosition": "76,0",
-        "scrollLine": "64",
-        "last_setup_crc32": "BA57A4CF79e5b781"
+        "cursorPosition": "99,35",
+        "scrollLine": "97",
+        "last_setup_crc32": ""
     },
     "folds": "",
-    "lastKnownWriteTime": 1606537281,
+    "lastKnownWriteTime": 1606699447,
     "encoding": "UTF-8",
     "collab_server": "",
     "source_window": "",
-    "last_content_update": 1606537281790,
+    "last_content_update": 1606699447859,
     "read_only": false,
     "read_only_alternatives": []
 }
